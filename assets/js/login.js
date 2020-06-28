@@ -42,22 +42,19 @@ $(function () {
       username: $("#form_reg [name=username]").val(),
       password: $("#form_reg [name=password]").val(),
     };
-    $.post(
-      "/api/reguser",
-      inputParams,
-      function (res) {
-        if (res.status !== 0) {
-          return layer.msg(res.message);
-        }
-        layer.msg("注册成功，请登录");
-        // 模拟人的点击行为 --- 跳转到登录页面
-        $("#link_login").click();
+    $.post("/api/reguser", inputParams, function (res) {
+      if (res.status !== 0) {
+        return layer.msg(res.message);
       }
-    );
+      layer.msg("注册成功，请登录");
+      // 模拟人的点击行为 --- 跳转到登录页面
+      $("#link_login").click();
+    });
   });
 
   // 登录
   $("#form_login").submit(function (e) {
+    // 箭头函数里面没有 this ，往上一级作用域里查找
     e.preventDefault();
     $.ajax({
       type: "post",
@@ -72,7 +69,7 @@ $(function () {
         // 真正的将 token 落地缓存 localStorage 持久化存储的地方
         localStorage.setItem("token", res.token);
         // 跳转到后台主页
-        location.href = "../../index.html";
+        location.href = "http://127.0.0.1:5500/code/index.html";
       },
     });
   });
