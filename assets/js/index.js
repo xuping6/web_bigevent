@@ -15,7 +15,7 @@ $(function () {
         // 1.情况本地存储中的token
         localStorage.removeItem("token");
         // 2.重新跳转到登录页面
-        location.href = "http://127.0.0.1:5500/code/login.html";
+        location.href = "/login.html";
 
         // 关闭 confirm 询问框
         layer.close(index);
@@ -56,7 +56,8 @@ function renderAvatar(user) {
   // 2. 设置欢迎的文本
   $("#welcome").html("欢迎&nbsp;&nbsp;" + name);
   // 3. 按需渲染用户的头像（优先获取到图片头像）
-  if (!user.user_pic) {
+  // debugger
+  if (user.user_pic !== null) {
     // 3.1 渲染图片头像
     $(".layui-nav-img").attr("src", user.user_pic).show();
     $(".text-avtar").hide();

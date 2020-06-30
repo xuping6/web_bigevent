@@ -69,7 +69,7 @@ $(function () {
         // 真正的将 token 落地缓存 localStorage 持久化存储的地方
         localStorage.setItem("token", res.token);
         // 跳转到后台主页
-        location.href = "http://127.0.0.1:5500/code/index.html";
+        location.href = "/index.html";
       },
     });
   });
